@@ -1,6 +1,6 @@
 ---
 name: list
-description: This skill should be used when the user asks to "start a list", "make a list", "start a task list", "track items", "collect issues", "brain dump", "jot these down", or wants to gather items for later without acting on them.
+description: Use when the user asks to start a list, make a list, track items, collect issues, brain dump, jot things down, or wants to gather items for later without acting on them.
 ---
 
 # List Mode

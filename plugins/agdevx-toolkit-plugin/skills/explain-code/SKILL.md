@@ -1,6 +1,6 @@
 ---
 name: explain-code
-description: Explains code with visual diagrams and analogies. Use when explaining how code works, teaching about a codebase, or when the user asks "how does this work?"
+description: Use when explaining how code works, teaching about a codebase, or when the user asks "how does this work?"
 ---
 
 When explaining code, follow this structure:
@@ -11,7 +11,7 @@ Compare the code to something from everyday life. Pick something concrete and re
 
 ## 2. Diagram
 
-Use ASCII art to show the flow, structure, or relationships. Always include a diagram.
+Use ASCII art to show the flow, structure, or relationships. Include a diagram for anything with flow, state, or relationships. Skip for trivial code (simple helpers, constants).
 
 ## 3. Walkthrough
 
@@ -23,7 +23,7 @@ Highlight a common mistake, misconception, or subtle behavior.
 
 ---
 
-Keep explanations conversational. For complex concepts, use multiple analogies.
+Keep explanations conversational. For modules or systems, start with a high-level diagram before diving into individual components. For complex concepts, use multiple analogies.
 
 ## Example Output
 

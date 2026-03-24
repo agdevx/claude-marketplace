@@ -1,6 +1,6 @@
 ---
 name: pr-summary
-description: Analyze git branch changes and generate a comprehensive PR summary. Use when creating pull requests or summarizing branch work.
+description: Use when creating pull requests, summarizing branch work, or preparing a PR description.
 ---
 
 # PR Summary Generator
@@ -13,22 +13,13 @@ Brevity is respect for the reviewer's time. Every sentence must earn its place. 
 
 ## Instructions
 
-1. **Get branch information:**
-   - Current branch: `git branch --show-current`
-   - Target branch: Use $ARGUMENTS if provided, otherwise use 'main'
-   - Commits: `git log <target-branch>..HEAD --oneline`
+1. **Analyze the branch** against the target (use $ARGUMENTS if provided, otherwise 'main'):
+   - `git log <target>..HEAD --oneline` for commit history
+   - `git diff --stat <target>..HEAD` for scope
+   - `git diff <target>..HEAD` for detailed changes
+   - Read files with significant changes (>50 lines) to understand context
 
-2. **Analyze changes:**
-   - Changed files: `git diff --name-status <target-branch>..HEAD`
-   - Statistics: `git diff --stat <target-branch>..HEAD`
-   - Detailed diff for context: `git diff <target-branch>..HEAD`
-
-3. **Read key changed files** to understand context:
-   - Focus on files with significant changes (>50 lines changed)
-   - Read files to understand what actually changed
-   - Look for patterns across changes
-
-4. **Generate PR summary using the template:**
+2. **Generate PR summary using the template:**
 
 ### Template Structure
 
@@ -71,7 +62,7 @@ Chose HS256 for JWT signing — simpler than RS256 and sufficient since we contr
 Unit tests for token logic, integration tests for full auth flow, password reset email verified in staging.
 ```
 
-5. **Use the copy-to-clipboard tool to copy the PR summary to the clipboard**
+3. **Copy the PR summary to the clipboard** using the `agdevx-toolkit-plugin:copy-to-clipboard` skill
 
 ## Output Rules
 
@@ -85,7 +76,5 @@ Unit tests for token logic, integration tests for full auth flow, password reset
 
 ## Notes
 
-- If no target branch provided, compare against 'main'
-- Read actual file contents to understand changes, don't just rely on diffs
 - Be honest about scope — don't inflate minor changes
 - Flag potential risks or areas needing review
