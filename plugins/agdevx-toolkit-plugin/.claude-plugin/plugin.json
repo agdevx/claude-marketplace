@@ -20,7 +20,7 @@
 		],
 		"PostToolUse": [
 			{
-				"matcher": "Write|Edit|MultiEdit|Bash",
+				"matcher": "Write|Edit|MultiEdit|Bash|Read|Glob|Grep",
 				"hooks": [
 					{
 						"type": "command",
