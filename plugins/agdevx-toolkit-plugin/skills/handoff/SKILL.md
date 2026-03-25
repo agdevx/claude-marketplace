@@ -23,7 +23,7 @@ Review the conversation for context that exists ONLY in chat — not yet written
 
 ### 2. Persist: Write it down
 
-Update the project's existing planning/notes files with anything identified in step 1. Use whatever location the project already uses for plans, notes, or documentation — do NOT create a new convention.
+Update the project's existing planning files with anything identified in step 1. Use whatever location the project already uses for plans or documentation — do NOT create a new convention.
 
 If there's no obvious place, ask the user where to put it.
 
@@ -34,7 +34,7 @@ If there's no obvious place, ask the user where to put it.
 Create a prompt that a fresh Claude instance can use with zero prior context. The prompt must:
 
 - **State the goal** — what are we working on and why?
-- **Point to files** — list every file the new instance should read to get up to speed (plans, notes, relevant source files, test files)
+- **Point to files** — list every file the new instance should read to get up to speed (plans, relevant source files, test files)
 - **State current status** — what's done, what step we're on, what's next
 - **Include ephemeral context** — anything that matters but doesn't belong in project files (user preferences for this task, "we agreed to keep this simple", constraints discussed verbally)
 - **Be specific about the next action** — not "continue working" but "start implementing step 3: the database migration"
@@ -44,7 +44,7 @@ Keep the prompt concise but complete. A fresh instance should be able to read it
 ### 4. Deliver: Output and copy to clipboard
 
 1. Output the prompt so the user can see and review it
-2. Copy the prompt to the user's clipboard using the `agdevx-toolkit-plugin:copy-to-clipboard` skill
+2. Copy the prompt to the user's clipboard by invoking `agdevx-toolkit-plugin:copy-to-clipboard` via the Skill tool. Do NOT search for a clipboard tool with ToolSearch — there isn't one. The skill contains the platform-specific commands.
 
 ## Key Principles
 

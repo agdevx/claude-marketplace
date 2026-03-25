@@ -62,7 +62,7 @@ Chose HS256 for JWT signing — simpler than RS256 and sufficient since we contr
 Unit tests for token logic, integration tests for full auth flow, password reset email verified in staging.
 ```
 
-3. **Copy the PR summary to the clipboard** using the `agdevx-toolkit-plugin:copy-to-clipboard` skill
+3. **Copy the PR summary to the clipboard** by invoking `agdevx-toolkit-plugin:copy-to-clipboard` via the Skill tool. Do NOT search for a clipboard tool with ToolSearch — there isn't one. The skill contains the platform-specific commands.
 
 ## Output Rules
 
