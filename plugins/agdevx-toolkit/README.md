@@ -1,4 +1,4 @@
-# agdevx-toolkit-plugin
+# agdevx-toolkit
 
 Branch protection hooks, NUL file hygiene, .env secrecy, PR summaries, code explanation, clipboard utilities, countdown timers, session handoffs, and task list capture for Claude Code.
 

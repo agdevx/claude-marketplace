@@ -1,5 +1,5 @@
 {
-	"name": "agdevx-toolkit-plugin",
+	"name": "agdevx-toolkit",
 	"description": "Developer toolkit — hooks and skills for safer, smoother Claude Code workflows",
 	"version": "0.0.6",
 	"author": {

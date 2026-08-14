@@ -9,9 +9,12 @@
 	},
 	"plugins": [
 		{
-			"name": "agdevx-toolkit-plugin",
-			"source": "./plugins/agdevx-toolkit-plugin",
+			"name": "agdevx-toolkit",
+			"source": "./plugins/agdevx-toolkit",
 			"description": "Useful skills and hooks"
 		}
-	]
+	],
+	"renames": {
+		"agdevx-toolkit-plugin": "agdevx-toolkit"
+	}
 }

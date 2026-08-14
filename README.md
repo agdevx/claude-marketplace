@@ -21,14 +21,14 @@ claude plugin marketplace add AGDevX/Claude-Marketplace
 2. Install the plugin:
 
 ```bash
-claude plugin install agdevx-toolkit-plugin@agdevx-claude-marketplace
+claude plugin install agdevx-toolkit@agdevx-claude-marketplace
 ```
 
 ## AGDevX Toolkit Plugin
 
 > **Version:** 0.0.6
 >
-> **Location:** `./plugins/agdevx-toolkit-plugin`
+> **Location:** `./plugins/agdevx-toolkit`
 
 Developer toolkit — hooks and skills for safer, smoother Claude Code workflows.
 
