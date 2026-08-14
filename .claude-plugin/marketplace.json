@@ -5,13 +5,16 @@
 	},
 	"metadata": {
 		"description": "Claude Code extensions by AGDevX — skills and hooks",
-		"version": "0.0.5"
+		"version": "0.0.6"
 	},
 	"plugins": [
 		{
-			"name": "agdevx-toolkit-plugin",
-			"source": "./plugins/agdevx-toolkit-plugin",
+			"name": "agdevx-toolkit",
+			"source": "./plugins/agdevx-toolkit",
 			"description": "Useful skills and hooks"
 		}
-	]
+	],
+	"renames": {
+		"agdevx-toolkit-plugin": "agdevx-toolkit"
+	}
 }

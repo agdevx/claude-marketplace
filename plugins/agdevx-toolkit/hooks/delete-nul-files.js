@@ -12,6 +12,15 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+/*
+ * Stray NUL files are a Windows-only quirk. On Linux/macOS, "nul" is a
+ * perfectly legal filename a user may have created on purpose, so deleting
+ * it there would destroy real data. Bail out on any non-Windows platform.
+ */
+if (process.platform !== 'win32') {
+	process.exit(0);
+}
+
 //-- Read hook input from stdin
 let input = '';
 process.stdin.setEncoding('utf8');

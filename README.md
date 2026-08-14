@@ -6,7 +6,7 @@ Claude Code extensions by AGDevX — skills and hooks for safer, smoother workfl
 
 This marketplace provides reusable extensions for [Claude Code](https://claude.com/claude-code) that add functionality through:
 
-- **Skills**: Slash commands you invoke with `/skill-name`
+- **Skills**: Capabilities Claude invokes automatically when relevant, or that you can trigger directly with `/skill-name`
 - **Hooks**: Automated actions triggered by events (e.g., before/after a tool runs)
 - **Plugins**: Bundled collections of skills and hooks
 
@@ -15,19 +15,20 @@ This marketplace provides reusable extensions for [Claude Code](https://claude.c
 1. Install the marketplace:
 
 ```bash
-claude plugin marketplace add agdevx/claude-marketplace
+claude plugin marketplace add AGDevX/Claude-Marketplace
 ```
 
 2. Install the plugin:
 
 ```bash
-claude plugin install agdevx-toolkit-plugin
+claude plugin install agdevx-toolkit@agdevx-claude-marketplace
 ```
 
 ## AGDevX Toolkit Plugin
 
-**Version:** 0.0.4
-**Location:** `./plugins/agdevx-toolkit-plugin`
+> **Version:** 0.0.6
+>
+> **Location:** `./plugins/agdevx-toolkit`
 
 Developer toolkit — hooks and skills for safer, smoother Claude Code workflows.
 
@@ -43,15 +44,26 @@ Developer toolkit — hooks and skills for safer, smoother Claude Code workflows
 
 - **`/list`** — Collaborative note-taking mode for capturing task items, brain dumps, and collected issues without acting on them. Tracks items in-context for speed — no file writes until you're ready.
 
+- **`/countdown <duration>`** — Displays a countdown timer in the terminal that updates in place. Accepts durations like `30s`, `2m`, `1m30s`, or a bare number of seconds.
+
+- **`/handoff`** — Prepares a complete handoff so a fresh session can pick up the current work cold. Audits what's in context but not yet in files, then writes everything a cold start needs.
+
+- **`/null`** — Scans for and deletes Windows `NUL` files in the project, created when a reserved device name is accidentally used as a filename.
+
 ### Hooks
 
 - **`protect-main-branch`** _(PreToolUse)_ — Prevents accidental modifications to protected branches (`main`, `master`, `production`, `prod`, `release`). Blocks file writes and dangerous git commands when on a protected branch. Also blocks deletion of protected branches from any branch. Suggests branch names based on file context and extracts Jira issue IDs for branch naming. Read-only operations are allowed. Files outside the repository are automatically excluded from protection.
 
-- **`delete-nul-files`** _(PostToolUse)_ — Automatically detects and removes `NUL` files that Windows sometimes creates when a reserved device name is inadvertently used as a filename. Runs after `Write`, `Edit`, `MultiEdit`, and `Bash` operations.
+- **`block-null-redirects`** _(PreToolUse)_ — Blocks Bash commands that redirect output to `/dev/null` or `NUL`, which can create a literal `NUL` file on Windows. No-op on non-Windows platforms.
+
+- **`block-env-files`** _(PreToolUse)_ — Denies any Bash command that touches a `.env` file (including variants like `.env.local`), keeping secrets out of the transcript. Detects `.env` filename tokens anywhere in the command, so it also catches novel readers, redirection, and indirect reads — while leaving `process.env`-style property access alone.
+
+- **`delete-nul-files`** _(PostToolUse)_ — Automatically detects and removes `NUL` files that Windows sometimes creates when a reserved device name is inadvertently used as a filename. Runs after file and shell operations. No-op on non-Windows platforms.
 
 ## Prerequisites
 
-- Node.js (for hook scripts)
+- Node.js and bash (Git Bash on Windows) — used by the hook scripts
+- Linux only: `xclip` or `xsel` — used by the clipboard-backed skills (`/copy-to-clipboard`, `/pr-summary`, `/handoff`). Windows and macOS use built-in clipboard commands.
 - [Claude Code](https://claude.com/claude-code)
 
 ## Managing Plugins

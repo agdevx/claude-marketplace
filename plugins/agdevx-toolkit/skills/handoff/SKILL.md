@@ -44,7 +44,7 @@ Keep the prompt concise but complete. A fresh instance should be able to read it
 ### 4. Deliver: Output and copy to clipboard
 
 1. Output the prompt so the user can see and review it
-2. Copy the prompt to the user's clipboard by invoking `agdevx-toolkit-plugin:copy-to-clipboard` via the Skill tool. Do NOT search for a clipboard tool with ToolSearch — there isn't one. The skill contains the platform-specific commands.
+2. Copy the prompt to the user's clipboard by invoking `agdevx-toolkit:copy-to-clipboard` via the Skill tool. Do NOT search for a clipboard tool with ToolSearch — there isn't one. The skill contains the platform-specific commands.
 
 ## Key Principles
 

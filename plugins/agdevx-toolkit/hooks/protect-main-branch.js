@@ -233,7 +233,7 @@ Protected branches (${protectedBranches.join(', ')}) cannot be deleted.`;
 	}
 
 	//-- Handle file modification tools
-	if (['Write', 'Edit', 'MultiEdit'].includes(toolName)) {
+	if (['Write', 'Edit'].includes(toolName)) {
 		const filePath = toolInput.file_path || '';
 
 		//-- Skip protection for files outside this repository
