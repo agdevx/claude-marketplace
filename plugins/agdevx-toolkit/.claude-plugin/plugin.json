@@ -1,7 +1,7 @@
 {
 	"name": "agdevx-toolkit",
 	"description": "Developer toolkit — hooks and skills for safer, smoother Claude Code workflows",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"author": {
 		"name": "August F. Geier V"
 	},
@@ -15,6 +15,5 @@
 		"clipboard",
 		"windows",
 		"productivity"
-	],
-	"hooks": "./hooks/hooks.json"
+	]
 }

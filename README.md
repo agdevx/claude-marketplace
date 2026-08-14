@@ -26,7 +26,7 @@ claude plugin install agdevx-toolkit@agdevx-claude-marketplace
 
 ## AGDevX Toolkit Plugin
 
-> **Version:** 0.0.6
+> **Version:** 0.0.7
 >
 > **Location:** `./plugins/agdevx-toolkit`
 
