@@ -1,7 +1,7 @@
 {
 	"name": "agdevx-toolkit-plugin",
 	"description": "Developer toolkit — hooks and skills for safer, smoother Claude Code workflows",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"author": {
 		"name": "August F. Geier V"
 	},

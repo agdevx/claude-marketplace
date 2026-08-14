@@ -26,7 +26,7 @@ claude plugin install agdevx-toolkit-plugin
 
 ## AGDevX Toolkit Plugin
 
-**Version:** 0.0.4
+**Version:** 0.0.6
 **Location:** `./plugins/agdevx-toolkit-plugin`
 
 Developer toolkit — hooks and skills for safer, smoother Claude Code workflows.
