@@ -57,6 +57,7 @@ Scans for and deletes Windows `NUL` files in the project.
 ## Prerequisites
 
 - Node.js and bash (Git Bash on Windows) — used by the hook scripts
+- Linux only: `xclip` or `xsel` — used by the clipboard-backed skills (`/copy-to-clipboard`, `/pr-summary`, `/handoff`). Windows and macOS use built-in clipboard commands.
 
 ## License
 

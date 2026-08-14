@@ -63,6 +63,7 @@ Developer toolkit — hooks and skills for safer, smoother Claude Code workflows
 ## Prerequisites
 
 - Node.js and bash (Git Bash on Windows) — used by the hook scripts
+- Linux only: `xclip` or `xsel` — used by the clipboard-backed skills (`/copy-to-clipboard`, `/pr-summary`, `/handoff`). Windows and macOS use built-in clipboard commands.
 - [Claude Code](https://claude.com/claude-code)
 
 ## Managing Plugins
