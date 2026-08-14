@@ -1,0 +1,44 @@
+{
+	"description": "AGDevX toolkit hooks — branch protection, NUL file hygiene, and .env secrecy",
+	"hooks": {
+		"PreToolUse": [
+			{
+				"matcher": "Write|Edit|MultiEdit|Bash",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/protect-main-branch.js",
+						"timeout": 10
+					}
+				]
+			},
+			{
+				"matcher": "Bash",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/block-null-redirects.sh\"",
+						"timeout": 10
+					},
+					{
+						"type": "command",
+						"command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/block-env-files.sh\"",
+						"timeout": 10
+					}
+				]
+			}
+		],
+		"PostToolUse": [
+			{
+				"matcher": "Write|Edit|MultiEdit|Bash|Read|Glob|Grep",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/delete-nul-files.js",
+						"timeout": 5
+					}
+				]
+			}
+		]
+	}
+}
