@@ -13,14 +13,14 @@
 # NOT — those keep working in Node one-liners.
 #
 # We grep the raw stdin payload directly rather than parsing JSON: jq is not
-# installed in this environment, and node startup would tax every Bash call.
+# guaranteed to be installed, and node startup would tax every Bash call.
 # The Bash matcher means tool_input is just {command}, so the command string is
 # the only field that realistically carries a .env token. Tool-level
-# Read/Edit/Write/Grep on .env are denied separately in settings.json; this hook
-# only covers the Bash tool.
+# Read/Edit/Write/Grep on .env can be denied separately via settings.json deny
+# rules; this hook only covers the Bash tool.
 
 if grep -Eiq '(^|[[:space:]/\"'"'"'=~:<>|(),;&])\.env([^[:alpha:]]|$)'; then
-	printf '%s' '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":".env files are blocked on this machine to avoid leaking secrets into the transcript. August handles .env work himself; do not read, edit, or write .env files through any tool."}}'
+	printf '%s' '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":".env files are blocked to avoid leaking secrets into the transcript. Ask the user to handle .env work themselves; do not read, edit, or write .env files through any tool."}}'
 fi
 
 exit 0
