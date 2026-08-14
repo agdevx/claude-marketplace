@@ -5,5 +5,16 @@
 	"author": {
 		"name": "August F. Geier V"
 	},
+	"homepage": "https://github.com/AGDevX/Claude-Marketplace",
+	"repository": "https://github.com/AGDevX/Claude-Marketplace",
+	"license": "MIT",
+	"keywords": [
+		"hooks",
+		"skills",
+		"branch-protection",
+		"clipboard",
+		"windows",
+		"productivity"
+	],
 	"hooks": "./hooks/hooks.json"
 }
