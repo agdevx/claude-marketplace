@@ -3,7 +3,7 @@
 	"hooks": {
 		"PreToolUse": [
 			{
-				"matcher": "Write|Edit|MultiEdit|Bash",
+				"matcher": "Write|Edit|Bash",
 				"hooks": [
 					{
 						"type": "command",
@@ -30,7 +30,7 @@
 		],
 		"PostToolUse": [
 			{
-				"matcher": "Write|Edit|MultiEdit|Bash|Read|Glob|Grep",
+				"matcher": "Write|Edit|Bash|Read|Glob|Grep",
 				"hooks": [
 					{
 						"type": "command",
