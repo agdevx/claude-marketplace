@@ -11,8 +11,15 @@
 # Bash matcher means tool_input is just {command}, so the command string is
 # the only field that realistically carries a redirect token.
 
+#-- The stray-NUL-file quirk is Windows-only; on macOS/Linux, redirecting to
+#-- /dev/null is idiomatic and safe, so the hook allows everything there.
+case "$(uname -s)" in
+	MINGW* | MSYS* | CYGWIN* | Windows_NT) ;;
+	*) exit 0 ;;
+esac
+
 if grep -Eiq '>[[:space:]]*(/dev/null|nul)([^[:alnum:]_]|$)'; then
-	printf '%s' '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"Redirect to /dev/null or NUL is blocked on this Windows machine: it can create a literal NUL file. Omit the redirect, or capture output to a real file/variable and inspect it instead."}}'
+	printf '%s' '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"Redirect to /dev/null or NUL is blocked on Windows: it can create a literal NUL file. Omit the redirect, or capture output to a real file/variable and inspect it instead."}}'
 fi
 
 exit 0
