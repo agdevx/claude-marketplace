@@ -16,7 +16,24 @@
 						"timeout": 10
 					}
 				]
-			}
+			},
+			{
+        		"matcher": "Bash",
+        		"hooks": [
+          			{
+            			"type": "command",
+            			"command": "if grep -Eiq '>[[:space:]]*(/dev/null|nul)([^[:alnum:]_]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Redirect to /dev/null or NUL is blocked on this Windows machine: it can create a literal NUL file. Omit the redirect, or capture output to a real file/variable and inspect it instead.\"}}'; fi",
+            			"shell": "bash",
+            			"timeout": 10
+          			},
+          			{
+            			"type": "command",
+            			"command": "bash \"$HOME/.claude/hooks/block-env-files.sh\"",
+            			"shell": "bash",
+            			"timeout": 10
+          			}
+        		]
+      		}
 		],
 		"PostToolUse": [
 			{
