@@ -36,6 +36,21 @@ function runCommand(command) {
 }
 
 /**
+ * Extract a directory a Bash command explicitly `cd`s into before running
+ * its real command (e.g. `cd "C:\repo" && git commit ...`). Cross-repo
+ * commands from a session rooted elsewhere would otherwise be checked
+ * against the session's cwd instead of the repo the command actually targets.
+ */
+function extractCdTarget(command) {
+	const match = command.match(/^\s*cd\s+(?:"([^"]+)"|'([^']+)'|(\S+))\s*(?:&&|;)/);
+	if (!match) {
+		return null;
+	}
+
+	return match[1] || match[2] || match[3] || null;
+}
+
+/**
  * Check if we're in a git repository
  */
 function isGitRepo() {
@@ -174,6 +189,19 @@ function main(inputData) {
 		process.chdir(cwd);
 	} catch (error) {
 		process.exit(0);
+	}
+
+	//-- If this Bash command explicitly cd's into another repo, check branch protection
+	//-- against THAT repo instead of the session's fixed cwd
+	if (toolName === 'Bash') {
+		const cdTarget = extractCdTarget(toolInput.command || '');
+		if (cdTarget) {
+			try {
+				process.chdir(cdTarget);
+			} catch (error) {
+				//-- Target doesn't exist or isn't accessible; fall back to session cwd
+			}
+		}
 	}
 
 	//-- Check if we're in a git repository
